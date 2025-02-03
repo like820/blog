@@ -1,0 +1,25 @@
+body{
+    font-family: monospace;
+    color: #ebebeb;
+    background-color: #004282;
+}
+a{
+    color:#ebebeb ;
+    text-decoration: none;
+}
+img{
+    width: 100%;
+}
+header{
+padding: 1em;
+}
+main{
+    padding: 1em;
+    margin: auto;
+}
+footer{
+    bottom: 0;
+    position: fixed;
+    /* padding: 1em; */
+    justify-self: anchor-center;
+}
