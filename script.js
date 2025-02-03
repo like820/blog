@@ -9,6 +9,13 @@
                 date: '2025-02-03',
         
             },
+                   { 
+                filename: 'other-post.md',
+                title: 'Other Post',
+                subtitle: 'testing',
+                date: '2025-02-03',
+        
+            },
         
             // Add more posts here
         ];
