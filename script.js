@@ -6,14 +6,22 @@ let postsIndex = [
         title: 'My First Post',
         subtitle: 'abced',
         date: '2025-02-03',
+        miniature: '🚀', // Using emoji
     },
     {
         filename: 'other-post.md',
         title: 'Other Post',
         subtitle: 'testing',
         date: '2025-02-03',
+        miniature: 'images/post-thumbnail.jpg', // Using image path
     },
-    // Add more posts here
+    {
+        filename: 'third-post.md',
+        title: 'Third Post',
+        subtitle: 'Another test',
+        date: '2025-02-03',
+        miniature: '📝', // Using emoji
+    }
 ];
 
 async function loadMarkdownFile(filename) {
@@ -28,7 +36,6 @@ async function loadMarkdownFile(filename) {
 }
 
 function generatePostUrl(filename) {
-    // Remove .md extension and convert to URL-friendly format
     return `?post=${filename.replace('.md', '')}`;
 }
 
@@ -38,6 +45,19 @@ function getPostFilenameFromUrl() {
     return postParam ? `${postParam}.md` : null;
 }
 
+function renderMiniature(miniature) {
+    // Check if the miniature is an emoji (simple check for now)
+    const isEmoji = miniature && miniature.length <= 2;
+    
+    if (!miniature) {
+        return '📄'; // Default emoji for posts without miniature
+    } else if (isEmoji) {
+        return miniature;
+    } else {
+        return `<img src="${miniature}" alt="Post thumbnail" class="post-miniature">`;
+    }
+}
+
 async function loadPosts() {
     let content = document.getElementById('content');
     let html = '<h2>Blog Posts</h2>';
@@ -45,18 +65,25 @@ async function loadPosts() {
     for (let post of postsIndex) {
         html += `
             <div class="post-preview">
-                <h3 class="post-title">
-                    <a href="${generatePostUrl(post.filename)}">${post.title}</a>
-                </h3>
-                <h5>${post.date}</h5>
-                <p>${post.subtitle}</p>
+                <div class="post-header">
+                 <h3 class="post-title">
+                            <a href="${generatePostUrl(post.filename)}">${post.title}</a>
+                        </h3>
+                    <div class="miniature">
+                        ${renderMiniature(post.miniature)}
+                    </div>
+                    <div class="post-info">
+                       
+                        <h5>${post.date}</h5>
+                        <p>${post.subtitle}</p>
+                    </div>
+                </div>
             </div>
         `;
     }
     
     content.innerHTML = html;
-    // Update the page title
-    document.title = 'Blog Posts';
+    document.title = 'drops post or sth💧';
 }
 
 async function loadPost(filename) {
@@ -71,12 +98,18 @@ async function loadPost(filename) {
     let postContent = await loadMarkdownFile(`${postsDirectory}/${filename}`);
     content.innerHTML = `
         <article>
-            <h2>${post.title}</h2>
-            <div class="post-date">${post.date}</div>
+            <div class="post-header">
+                <div class="miniature large">
+                    ${renderMiniature(post.miniature)}
+                </div>
+                <div class="post-info">
+                    <h2>${post.title}</h2>
+                    <div class="post-date">${post.date}</div>
+                </div>
+            </div>
             <div class="post-content">${postContent}</div>
         </article>
     `;
-    // Update the page title
     document.title = post.title;
 }
 
@@ -84,11 +117,9 @@ async function loadAbout() {
     let content = document.getElementById('content');
     let aboutContent = await loadMarkdownFile('about.md');
     content.innerHTML = aboutContent;
-    // Update the page title
     document.title = 'About';
 }
 
-// Router function to handle different pages
 async function handleRoute() {
     const urlParams = new URLSearchParams(window.location.search);
     const page = urlParams.get('page');
