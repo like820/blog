@@ -44,7 +44,7 @@
                         <p>${post.subtitle}</p>
           
                         
-                    </li>
+             
                 `;
             }
             
