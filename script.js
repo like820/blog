@@ -67,7 +67,7 @@ function renderMiniature(miniature) {
 
 async function loadPosts() {
     let content = document.getElementById('content');
-    let html = '<h2>Blog Posts</h2>';
+    let html = '';
     
     for (let post of postsIndex) {
         html += `
@@ -90,7 +90,7 @@ async function loadPosts() {
     }
     
     content.innerHTML = html;
-    document.title = 'drops post or sth💧';
+    document.title = '💧';
 }
 
 async function loadPost(filename) {
@@ -149,7 +149,7 @@ window.addEventListener('popstate', handleRoute);
 
 
 
-//dark theme
+//dark theme switcher
 let themeSwitcher = document.getElementById("theme-switcher");
 themeSwitcher.addEventListener("change", function() {
   if (this.checked) {

@@ -7,10 +7,10 @@ body{
     margin: 0;
     width: 100%;
 }
+     
 html.dark-theme {
     color:  var(--white);
     background-color: var(--main);
-    animation: all 1s cubic-bezier(0.69, 0.01, 0.24, 0.68);
 }  
 html.dark-theme a{
     color:  var(--white);
@@ -45,13 +45,20 @@ main{
     max-width: 100px;
 }
 footer{
-    font-size: 0.2em;
+    font-size: xx-small;
     bottom: 0;
     position: fixed;
-    /* padding: 1em; */
-    justify-self: anchor-center;
-    background-color: var(--main);
-    color: var(--white);
     width: 100vw;
     justify-items: center;
+    backdrop-filter: blur(1px);
+    padding: 1em;
 }
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        color:  var(--white);
+        background-color: var(--main);
+    }
+    a{
+        color:var(--white)
+    }
+  }    */
