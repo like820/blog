@@ -21,6 +21,13 @@ let postsIndex = [
         subtitle: 'Another test',
         date: '2025-02-03',
         miniature: '📝', // Using emoji
+    },
+    {
+        filename: 'flowNote1.md',
+        title: 'attractive reaseach',
+        subtitle: 'Another test',
+        date: '2025-02-05',
+        miniature: '🗑️', // Using emoji
     }
 ];
 
@@ -139,3 +146,15 @@ handleRoute();
 
 // Handle browser navigation events
 window.addEventListener('popstate', handleRoute);
+
+
+
+//dark theme
+let themeSwitcher = document.getElementById("theme-switcher");
+themeSwitcher.addEventListener("change", function() {
+  if (this.checked) {
+    document.documentElement.classList.add("dark-theme");
+  } else {
+    document.documentElement.classList.remove("dark-theme");
+  }
+});        
