@@ -28,6 +28,61 @@ let postsIndex = [
         subtitle: 'Another test',
         date: '2025-02-05',
         miniature: '🗑️', // Using emoji
+    },
+    {
+        filename: 'flowNote2.md',
+        title: 'hmm',
+        subtitle: 'Another test',
+        date: '2025-02-06',
+        miniature: '🗑️', // Using emoji
+    },
+    {
+        filename: 'flowNote3.md',
+        title: 'habits',
+        subtitle: 'Another test',
+        date: '2025-02-07',
+        miniature: '🗑️', // Using emoji
+    },{
+        filename: 'first-post.md',
+        title: 'My First Post',
+        subtitle: 'abced',
+        date: '2025-02-03',
+        miniature: '🚀', // Using emoji
+    },
+    {
+        filename: 'other-post.md',
+        title: 'Other Post',
+        subtitle: 'testing',
+        date: '2025-02-03',
+        miniature: 'images/post-thumbnail.jpg', // Using image path
+    },
+    {
+        filename: 'third-post.md',
+        title: 'Third Post',
+        subtitle: 'Another test',
+        date: '2025-02-03',
+        miniature: '📝', // Using emoji
+    },
+    {
+        filename: 'flowNote1.md',
+        title: 'attractive reaseach',
+        subtitle: 'Another test',
+        date: '2025-02-05',
+        miniature: '🗑️', // Using emoji
+    },
+    {
+        filename: 'flowNote2.md',
+        title: 'hmm',
+        subtitle: 'Another test',
+        date: '2025-02-06',
+        miniature: '🗑️', // Using emoji
+    },
+    {
+        filename: 'flowNote3.md',
+        title: 'habits',
+        subtitle: 'Another test',
+        date: '2025-02-07',
+        miniature: '🗑️', // Using emoji
     }
 ];
 
@@ -70,22 +125,27 @@ async function loadPosts() {
     let html = '';
     
     for (let post of postsIndex) {
-        html += `
-            <div class="post-preview">
+        html += ` 
+                <a href="${generatePostUrl(post.filename)}"><div class="post-preview">
+
                 <div class="post-header">
                  <h3 class="post-title">
-                            <a href="${generatePostUrl(post.filename)}">${post.title}</a>
+                           ${post.title}    
                         </h3>
+                         <p>${post.subtitle}</p>
+                           </div>
                     <div class="miniature">
                         ${renderMiniature(post.miniature)}
                     </div>
                     <div class="post-info">
                        
-                        <h5>${post.date}</h5>
-                        <p>${post.subtitle}</p>
+                        <p>${post.date}</p>
+                  
                     </div>
+                 
                 </div>
-            </div>
+                   </a>   
+         
         `;
     }
     

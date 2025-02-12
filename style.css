@@ -1,25 +1,22 @@
 :root {
     --main: #004282;
     --white: #ebebeb;
+    transition: all 0.82s ease;
     
+}
+:root.dark-theme {
+    --main: #ebebeb;
+    --white: #004282;
+}
+#themeswitcher{
+    position: relative;
+    top: 2px;
 }
 body{
     margin: 0;
     width: 100%;
 }
      
-html.dark-theme {
-    color:  var(--white);
-    background-color: var(--main);
-}  
-html.dark-theme a{
-    color:  var(--white);
-}  
-html.dark-theme footer{
-    color: var(--main);
-    background-color:  var(--white);
-}  
-
 html{
     font-family: monospace;
     color:  var(--main);
@@ -34,7 +31,16 @@ img{
     width: 100%;
 }
 header{
-padding: 1em;
+    padding: 1em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    backdrop-filter: blur(1px);
+    position: sticky;
+    top: 0;
 }
 main{
     padding: 1em;
@@ -62,3 +68,15 @@ footer{
         color:var(--white)
     }
   }    */
+
+  .post-preview{
+    border: var(--main) 0.2em solid;
+    border-radius: 2em;
+    margin: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
